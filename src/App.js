@@ -86,7 +86,7 @@ const App = () => {
 
   const getEndpoints = async () => {
     const endpoints = await requestService.getAllEndpoints()
-    return JSON.stringify(endpoints)
+    return ""
   }
 
   return (
