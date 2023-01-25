@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 // components
 import EndpointForm from './components/endpointform'
+import requestService from './services/requestService'
 
 // import commentService from './services/commentsService'
 
@@ -83,9 +84,16 @@ const App = () => {
   //   setPgComments(updatedComments);
   // };
 
+  const getEndpoints = async () => {
+    const endpoints = await requestService.getAllEndpoints()
+    return endpoints
+  }
+
   return (
     <div>
+      <a href="/bin/1">View Bin</a>
       <EndpointForm />
+      <p>{getEndpoints()}</p>
     </div>
   );
 }

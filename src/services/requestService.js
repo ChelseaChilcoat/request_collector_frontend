@@ -1,5 +1,6 @@
 import axios from 'axios';
-const  baseUrl = '/bin/1';
+//fix me
+const  baseUrl = 'https://5506-98-117-243-154.ngrok.io/bin/1';
 
 const getAllEndpoints = () => {
   const request = axios.get(baseUrl);
