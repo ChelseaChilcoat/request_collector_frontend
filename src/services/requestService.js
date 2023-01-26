@@ -7,14 +7,16 @@ const getAllEndpoints = () => {
   return request.then(response => response.data);
 };
 
-const createNewEndpoint = async () => {
+const createNewEndpoint = async (endpoint) => {
   // const response = await axios.post(baseUrl)
+  const params = { endpoint };
+  //console.log(JSON.stringify(params))
   let response;
   try {
       response = await fetch(`${baseUrl}/endpoint`, {
           method: 'POST',
-          // body: JSON.stringify({ endpoint }),
-          // headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(params),
+          headers: { 'Content-Type': 'application/json' },
       });
       const data = await response.json();
       console.log(data)
