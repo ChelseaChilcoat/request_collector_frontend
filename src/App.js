@@ -32,7 +32,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home createEndpoint={requestService.createNewEndpoint} endpoints={endpoints} />} />
         <Route path="/:path" element={<RequestsPage />} />
-       </Routes>
+      </Routes>
   </BrowserRouter>
   );
 }
