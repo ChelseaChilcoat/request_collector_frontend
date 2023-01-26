@@ -7,17 +7,20 @@ function EndpointForm({createEndpoint}) {
     createEndpoint()
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Endpoint:
-        <input
-          type="text"
-          value={endpoint}
-          onChange={(e) => setEndpoint(e.target.value)}
-        />
-      </label>
-      <button type="submit">Create</button>
-    </form>
+    <div>
+      <h2>Create New Endpoint:</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Endpoint:
+          <input
+            type="text"
+            value={endpoint}
+            onChange={(e) => setEndpoint(e.target.value)}
+          />
+        </label>
+        <button type="submit">Create</button>
+      </form>
+    </div>
   );
 }
 export default EndpointForm;
