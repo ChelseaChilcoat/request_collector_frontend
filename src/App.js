@@ -10,13 +10,6 @@ const App = () => {
   const [endpoints, setEndpoints] = useState([]);
   // const [pgComments, setPgComments] = useState([]);
 
-  // useEffect(() => {
-  //   commentService
-  //     .getAll()
-  //     .then(comments => {
-  //       setComments(comments);
-  //     });
-  // }, []);
   //
   // useEffect(() => {
   //   commentService
@@ -83,6 +76,14 @@ const App = () => {
   //   const updatedComments = pgComments.filter(el => el.id !== parseInt(id, 10));
   //   setPgComments(updatedComments);
   // };
+
+  useEffect(() => {
+    requestService
+      .getAllEndpoints()
+      .then(endpoints => {
+        setEndpoints(endpoints);
+      });
+  }, []);
 
   const getEndpoints = async () => {
     const endpoints = await requestService.getAllEndpoints()
