@@ -93,7 +93,7 @@ const App = () => {
     <div>
       <a href="/bin/1">View Bin</a>
       <EndpointForm />
-      <p>{getEndpoints()}</p>
+      <p>getEndpoints()</p>
     </div>
   );
 }
