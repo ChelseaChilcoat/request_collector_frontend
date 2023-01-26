@@ -30,7 +30,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home createEndpoint={requestService.createNewEndpoint} endpoints={endpoints} />} />
+        <Route path="/" element={<Home createEndpoint={requestService.createNewEndpoint} removeEndpoint={requestService.removeEndpoint} endpoints={endpoints} />} />
         <Route path="/:path" element={<RequestsPage />} />
       </Routes>
   </BrowserRouter>

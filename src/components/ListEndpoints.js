@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ListEndpoints = ({ endpoints }) => {
+const ListEndpoints = ({ removeEndpoint, endpoints }) => {
+  console.log(typeof removeEndpoint);
+  const remove = (event) => {
+    event.preventDefault();
+    const endpoint = event.target.id;
+    removeEndpoint(endpoint);
+  };
+
   return (
     <div>
       <h2>Existing Endpoints:</h2>
@@ -14,8 +21,8 @@ const ListEndpoints = ({ endpoints }) => {
           return (
             // for some reaso the app is not pickind up on the key property even
             // though it's picking up the Id property. I have NO ideas here...
-            <li key={path} id={path}>
-              <Link to={`/${path}`}>{path}</Link>
+            <li key={path}>
+              <Link to={`/${path}`}>{path}</Link><button id={path} onClick={remove}>Delete</button>
             </li>
           );
         })}
