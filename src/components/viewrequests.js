@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './styles.css';
 
-function RequestsPage({ path }) {
+//function RequestsPage({ path }) {
+function RequestsPage() {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const { path } = useParams();
   useEffect(() => {
     fetch(`http://localhost:4000/bin/1/endpoint/${path}`)
       .then((res) => res.json())

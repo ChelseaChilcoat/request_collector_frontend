@@ -4,7 +4,10 @@ import ListEndpoints from './ListEndpoints'
 const Home = ({ createEndpoint, endpoints }) => {
   return (
     <div>
-      <h1>Welcome To Our Request Bin</h1>
+      {
+      //a working title
+      }
+      <h1>Welcome To Our Request Bin, Wooooo!!!  GO TEAM 4!!!! WOOOO!!!</h1>
       <EndpointForm createEndpoint={createEndpoint} />
       <ListEndpoints endpoints={endpoints} />
   </div>

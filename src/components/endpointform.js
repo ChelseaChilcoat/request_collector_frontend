@@ -8,7 +8,7 @@ function EndpointForm({createEndpoint}) {
   };
   return (
     <div>
-      <h2>Create New Endpoint</h2>
+      <h2>Create New Endpoint:</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Endpoint:
