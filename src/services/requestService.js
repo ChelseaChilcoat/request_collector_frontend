@@ -19,12 +19,14 @@ const createNewEndpoint = async (endpoint) => {
           headers: { 'Content-Type': 'application/json' },
       });
       const data = await response.json();
-      console.log(data)
+      const myPath = data.split(': ')[1].split('added')[0]
+      console.log(data, myPath)
+      return myPath;
   } catch (err) {
       console.error(err);
   }
   // const response = await axios.post(baseUrl, newObject)
-  return response.data;
+  
 };
 
 // const removeEndpoint = async (endpointId) => {
