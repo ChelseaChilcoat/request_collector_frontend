@@ -4,7 +4,8 @@ function EndpointForm({createEndpoint}) {
   const [endpoint, setEndpoint] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
-    createEndpoint()
+    createEndpoint(endpoint)
+    setEndpoint('')
   };
   return (
     <div>
