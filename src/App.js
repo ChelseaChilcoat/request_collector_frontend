@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // components
-import EndpointForm from './components/endpointform'
-import RequestsPage from './components/viewrequests'
-import requestService from './services/requestService'
+import Home from './components/Home';
+import RequestsPage from './components/viewrequests';
+import requestService from './services/requestService';
 
 // import commentService from './services/commentsService'
 
@@ -95,12 +96,16 @@ const App = () => {
   }
 
   return (
+    <BrowserRouter>
     <div>
-      <a href="/bin/1">View Bin</a>
-      <EndpointForm createEndpoint={requestService.createNewEndpoint} />
       <p>{endpoints}</p>
       <RequestsPage path="9622e4d5-39a9-417d-a1ee-ac43b8136c29" />
     </div>
+      <Routes>
+        <Route path="/" element={<Home createEndpoint={requestService.createNewEndpoint} endpoints={endpoints} />} />
+        <Route path="/:path" element={<RequestsPage path="9622e4d5-39a9-417d-a1ee-ac43b8136c29" />} />
+       </Routes>
+  </BrowserRouter>
   );
 }
 
