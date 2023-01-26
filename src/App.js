@@ -96,7 +96,7 @@ const App = () => {
   return (
     <div>
       <a href="/bin/1">View Bin</a>
-      <EndpointForm />
+      <EndpointForm createEndpoint={requestService.createNewEndpoint}/>
       <p>{endpoints}</p>
     </div>
   );

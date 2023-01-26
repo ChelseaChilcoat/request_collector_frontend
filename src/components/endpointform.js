@@ -1,20 +1,10 @@
 import { useState, useEffect } from 'react';
 
-function EndpointForm() {
+function EndpointForm({createEndpoint}) {
   const [endpoint, setEndpoint] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-        const response = await fetch('/bin/1/endpoint', {
-            method: 'POST',
-            body: JSON.stringify({ endpoint }),
-            headers: { 'Content-Type': 'application/json' },
-        });
-        const data = await response.json();
-        console.log(data)
-    } catch (err) {
-        console.error(err);
-    }
+    createEndpoint()
   };
   return (
     <form onSubmit={handleSubmit}>
