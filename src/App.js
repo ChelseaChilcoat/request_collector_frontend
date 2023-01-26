@@ -86,14 +86,16 @@ const App = () => {
 
   const getEndpoints = async () => {
     const endpoints = await requestService.getAllEndpoints()
-    return ""
+    console.log("endpoint", endpoints)
+    console.log("type", typeof endpoints)
+    return
   }
 
   return (
     <div>
       <a href="/bin/1">View Bin</a>
       <EndpointForm />
-      <p>getEndpoints()</p>
+      <p>{getEndpoints()}</p>
     </div>
   );
 }
