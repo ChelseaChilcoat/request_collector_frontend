@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 // components
 import EndpointForm from './components/endpointform'
+import RequestsPage from './components/viewrequests'
 import requestService from './services/requestService'
 
 // import commentService from './services/commentsService'
@@ -96,8 +97,9 @@ const App = () => {
   return (
     <div>
       <a href="/bin/1">View Bin</a>
-      <EndpointForm createEndpoint={requestService.createNewEndpoint}/>
+      <EndpointForm createEndpoint={requestService.createNewEndpoint} />
       <p>{endpoints}</p>
+      <RequestsPage path="9622e4d5-39a9-417d-a1ee-ac43b8136c29" />
     </div>
   );
 }
