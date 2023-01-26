@@ -9,8 +9,9 @@ const getAllEndpoints = () => {
 
 const createNewEndpoint = async () => {
   // const response = await axios.post(baseUrl)
+  let response;
   try {
-      const response = await fetch('${baseUrl}/endpoint', {
+      response = await fetch('${baseUrl}/endpoint', {
           method: 'POST',
           // body: JSON.stringify({ endpoint }),
           // headers: { 'Content-Type': 'application/json' },
