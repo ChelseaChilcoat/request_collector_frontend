@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+}
+
+table {
+  border-style: groove;
+}
+
+th,td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+thead {
+  background-color: #333;
+  color: white;
+}
+
+.cell-highlight {
+  background-color: gold;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #eee;
+}
