@@ -97,10 +97,6 @@ const App = () => {
 
   return (
     <BrowserRouter>
-    <div>
-      <p>{endpoints}</p>
-      <RequestsPage path="9622e4d5-39a9-417d-a1ee-ac43b8136c29" />
-    </div>
       <Routes>
         <Route path="/" element={<Home createEndpoint={requestService.createNewEndpoint} endpoints={endpoints} />} />
         <Route path="/:path" element={<RequestsPage path="9622e4d5-39a9-417d-a1ee-ac43b8136c29" />} />
