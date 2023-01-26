@@ -1,6 +1,6 @@
 import axios from 'axios';
 //fix me
-const  baseUrl = 'localhost:4000/bin/1';
+const  baseUrl = 'http://localhost:4000/bin/1';
 
 const getAllEndpoints = () => {
   const request = axios.get(baseUrl);

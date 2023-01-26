@@ -7,7 +7,7 @@ import requestService from './services/requestService'
 // import commentService from './services/commentsService'
 
 const App = () => {
-  // const [comments, setComments] = useState([]);
+  const [endpoints, setEndpoints] = useState([]);
   // const [pgComments, setPgComments] = useState([]);
 
   // useEffect(() => {
@@ -88,6 +88,7 @@ const App = () => {
     const endpoints = await requestService.getAllEndpoints()
     console.log("endpoint", endpoints)
     console.log("type", typeof endpoints)
+    setEndpoints(endpoints)
     return
   }
 
@@ -95,7 +96,7 @@ const App = () => {
     <div>
       <a href="/bin/1">View Bin</a>
       <EndpointForm />
-      <p>{getEndpoints()}</p>
+      <p>{endpoints}</p>
     </div>
   );
 }
