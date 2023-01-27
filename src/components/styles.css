@@ -32,3 +32,11 @@ tbody tr:nth-child(even) {
 img {
   width: 50px;
 }
+
+li {
+  list-style: none;
+  margin-bottom: 5px;
+}
+.links {
+  margin-right: 25px;
+}
