@@ -46,7 +46,7 @@ function EndpointForm({createEndpoint}) {
             minLength={5}
             onChange={(e) => setEndpoint(e.target.value)}
           />
-        </la
+        </label>
         <button type="submit">Create</button>
       </form>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} appElement={document.getElementById('root')}>
