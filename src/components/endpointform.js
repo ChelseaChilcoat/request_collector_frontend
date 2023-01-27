@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Modal from 'react-modal'
 
-function EndpointForm({createEndpoint}) {
+function EndpointForm({createEndpoint, updateEndpointArray}) {
   const [endpoint, setEndpoint] = useState('');
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -10,7 +10,7 @@ function EndpointForm({createEndpoint}) {
     let path = await createEndpoint(endpoint)
     setEndpoint(`http://localhost:4000/bin/1/endpoint/${path}`);
     setModalIsOpen(true);
-
+    updateEndpointArray(path);
   };
 
   const closeModal = () => {
