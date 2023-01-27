@@ -12,12 +12,6 @@ const ListEndpoints = ({ removeEndpoint, endpointPathArray }) => {
     <div>
       <h2>Existing Endpoints:</h2>
       <ul>
-       { /*{JSON.stringify(endpoints).split(',').map((endpoint) => {
-          // I manually parsed this, I'm _sure_ there is a better way
-          // JSON.parse on endpoints throws an error and breaks everything
-          // so it's not that...
-          let path = endpoint.split('\\"')[3];
-          return ( */}
         {endpointPathArray.map((path) => {
           return (
             <li key={path}>
