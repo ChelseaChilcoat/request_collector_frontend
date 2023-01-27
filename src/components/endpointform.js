@@ -20,14 +20,14 @@ function EndpointForm({createEndpoint, updateEndpointArray}) {
 
   const customStyles = {
   content : {
-    top                   : '30%',
-    left                  : '30%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)',
-    width                 : '300px',
-    height                : '200px',
+    // top                   : '30%',
+    // left                  : '30%',
+    // right                 : 'auto',
+    // bottom                : 'auto',
+    // marginRight           : '-50%',
+    // transform             : 'translate(-50%, -50%)',
+    // width                 : '300px',
+    // height                : '200px',
     backgroundColor       : '#F5F5F5',
     boxShadow             : '2px 2px 5px #888888',
     borderRadius          : '5px'
@@ -52,7 +52,7 @@ function EndpointForm({createEndpoint, updateEndpointArray}) {
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} appElement={document.getElementById('root')}>
           <h2>New Endpoint Created</h2>
           <p>Send POST requests to your endpoint at {endpoint}</p>
-          <button onClick={closeModal}>I Know My Endpoint</button>
+          <button onClick={closeModal}>Got it!</button>
       </Modal>
     </div>
   );
