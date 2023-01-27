@@ -7,7 +7,7 @@ const Home = ({ createEndpoint, removeEndpoint, endpointPathArray }) => {
       {
       //a working title
       }
-      <h1>Welcome To Our Request Bin, Wooooo!!!  GO TEAM 4!!!! WOOOO!!!</h1>
+      <h1>Welcome to the Dumpster of Disappointment!</h1>
       <EndpointForm createEndpoint={createEndpoint} />
       <ListEndpoints endpointPathArray={endpointPathArray} removeEndpoint={removeEndpoint} />
   </div>

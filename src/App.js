@@ -20,9 +20,9 @@ const App = () => {
       });
   }, []);
 
-  const createNewEndpoint = () => {
+  const createNewEndpoint = (e) => {
     requestService
-    .createNewEndpoint()
+    .createNewEndpoint(e)
     .then(endpoint => {
       setEndpointPathArray(endpointPathArray.concat(endpoint));
     });
@@ -37,7 +37,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home createEndpoint={createNewEndpoint} removeEndpoint={removeEndpoint} endpointPathArray={endpointPathArray} />} />
+        <Route path="/" element={<Home createEndpoint={requestService.createNewEndpoint} removeEndpoint={removeEndpoint} endpointPathArray={endpointPathArray} />} />
         <Route path="/:path" element={<RequestsPage />} />
       </Routes>
   </BrowserRouter>
