@@ -26,12 +26,12 @@ const createNewEndpoint = async (endpoint) => {
       console.error(err);
   }
   // const response = await axios.post(baseUrl, newObject)
-  
+
 };
 
-// const removeEndpoint = async (endpointId) => {
-//   axios.delete(`${baseUrl}/${endpointId}`);
-// };
+const removeEndpoint = async (endpointId) => {
+  await axios.delete(`${baseUrl}/endpoint/${endpointId}`);
+};
 
 const getAllRequests = (endpoint) => {
   const request = axios.get(`${baseUrl}/endpoint/${endpoint}`);
@@ -40,6 +40,7 @@ const getAllRequests = (endpoint) => {
 
 const requestService = { getAllEndpoints,
                          createNewEndpoint,
+                         removeEndpoint,
                          getAllRequests,
                         };
 

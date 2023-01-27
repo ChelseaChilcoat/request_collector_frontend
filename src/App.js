@@ -8,29 +8,36 @@ import requestService from './services/requestService';
 
 const App = () => {
   const [endpoints, setEndpoints] = useState([]);
+  const [endpointPathArray, setEndpointPathArray] = useState([]);
 
   useEffect(() => {
     requestService
       .getAllEndpoints()
       .then(endpoints => {
         setEndpoints(endpoints);
+        const paths = JSON.parse(endpoints).map(el => el.path);
+        setEndpointPathArray(paths);
       });
   }, []);
 
-  // Are we using this? (Honestly don't remember, but commented it out
-  // and page still works)
-  // const getEndpoints = async () => {
-  //   const endpoints = await requestService.getAllEndpoints()
-  //   console.log("endpoint", endpoints)
-  //   console.log("type", typeof endpoints)
-  //   setEndpoints(endpoints)
-  //   return
-  // }
+  const createNewEndpoint = (e) => {
+    requestService
+    .createNewEndpoint(e)
+    .then(endpoint => {
+      setEndpointPathArray(endpointPathArray.concat(endpoint));
+    });
+  };
+
+  const removeEndpoint = async (path) => {
+    await requestService.removeEndpoint(path);
+    const updatedPaths = endpointPathArray.filter(endpoint => endpoint !== path);
+    setEndpointPathArray(updatedPaths);
+  };
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home createEndpoint={requestService.createNewEndpoint} endpoints={endpoints} />} />
+        <Route path="/" element={<Home createEndpoint={requestService.createNewEndpoint} removeEndpoint={removeEndpoint} endpointPathArray={endpointPathArray} />} />
         <Route path="/:path" element={<RequestsPage />} />
       </Routes>
   </BrowserRouter>

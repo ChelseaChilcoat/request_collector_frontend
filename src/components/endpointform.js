@@ -8,9 +8,9 @@ function EndpointForm({createEndpoint}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let path = await createEndpoint(endpoint)
+
     setEndpoint(`http://localhost:4000/bin/1/endpoint/${path}`);
     setModalIsOpen(true);
-    
   };
 
   const closeModal = () => {
@@ -26,7 +26,7 @@ function EndpointForm({createEndpoint}) {
     bottom                : 'auto',
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)',
-    width                 : '300px',
+    width                 : '600px',
     height                : '200px',
     backgroundColor       : '#F5F5F5',
     boxShadow             : '2px 2px 5px #888888',
@@ -50,7 +50,8 @@ function EndpointForm({createEndpoint}) {
       </form>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} appElement={document.getElementById('root')}>
           <h2>New Endpoint Created</h2>
-          <p>Send POST requests to your endpoint at {endpoint}</p>
+          <p>Send POST requests to your endpoint at</p>
+          <p>{endpoint}</p>
           <button onClick={closeModal}>I Know My Endpoint</button>
       </Modal>
     </div>
