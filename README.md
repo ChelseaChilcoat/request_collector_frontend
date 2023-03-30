@@ -12,9 +12,10 @@ git clone https://github.com/alison-martinez/requestbin
 ```
 
 ### Starting Request Bin Frontend
-enter into the respository and run the applciation
+enter into the respository, download dependancies, and run the applciation
 ```
 cd requestbin_frontend
+npm install
 npm start
 ```
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
