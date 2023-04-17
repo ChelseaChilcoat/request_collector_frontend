@@ -8,7 +8,7 @@ function EndpointForm({createEndpoint, updateEndpointArray}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let path = await createEndpoint(endpoint)
-    setEndpoint(`http://localhost:4000/bin/1/endpoint/${path}`);
+    setEndpoint(`http://localhost:4000/endpoint/${path}`);
     setModalIsOpen(true);
     updateEndpointArray(path);
   };
@@ -58,3 +58,5 @@ function EndpointForm({createEndpoint, updateEndpointArray}) {
   );
 }
 export default EndpointForm;
+
+// need to validate endpoint and also process for no spaces

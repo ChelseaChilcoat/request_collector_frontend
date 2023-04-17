@@ -1,6 +1,6 @@
 import axios from 'axios';
 //fix me
-const  baseUrl = 'http://localhost:4000/bin/1';
+const  baseUrl = 'http://localhost:4000/';
 
 const getAllEndpoints = () => {
   const request = axios.get(baseUrl);
@@ -30,12 +30,16 @@ const createNewEndpoint = async (endpoint) => {
 };
 
 const removeEndpoint = async (endpointId) => {
-  await axios.delete(`${baseUrl}/endpoint/${endpointId}`);
+  await axios.delete(`${baseUrl}/${endpointId}`);
 };
 
 const getAllRequests = (endpoint) => {
-  const request = axios.get(`${baseUrl}/endpoint/${endpoint}`);
+  try {
+  const request = axios.get(`${baseUrl}/${endpoint}`);
   return request.then(response => JSON.parse(response.data));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const requestService = { getAllEndpoints,

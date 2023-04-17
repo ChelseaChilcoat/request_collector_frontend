@@ -1,6 +1,6 @@
-import EndpointForm from './endpointform'
-import ListEndpoints from './ListEndpoints'
-import './styles.css'
+import EndpointForm from './EndpointForm.js';
+import ListEndpoints from './ListEndpoints';
+import "../stylesheets/styles.css"
 
 const Home = ({ createEndpoint, removeEndpoint, endpointPathArray, updateEndpointArray }) => {
   return (

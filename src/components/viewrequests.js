@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './styles.css';
+import '../stylesheets/styles.css';
 
 //function RequestsPage({ path }) {
 function RequestsPage() {
@@ -10,7 +10,7 @@ function RequestsPage() {
 
   const { path } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:4000/bin/1/endpoint/${path}`)
+    fetch(`http://localhost:4000/${path}`)
       .then((res) => res.json())
       .then((data) => {
         setRequests(data);
