@@ -33,7 +33,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home createEndpoint={requestService.createNewEndpoint} updateEndpointArray={updateEndpointArray} removeEndpoint={removeEndpoint} endpointPathArray={endpointPathArray} />} />
+        <Route path="/" element={<Home createEndpoint={requestService.createEndpoint} updateEndpointArray={updateEndpointArray} removeEndpoint={removeEndpoint} endpointPathArray={endpointPathArray} />} />
         <Route path="/:path" element={<RequestsPage />} />
       </Routes>
   </BrowserRouter>

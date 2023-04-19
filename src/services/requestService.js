@@ -1,32 +1,23 @@
 import axios from 'axios';
 //fix me
-const  baseUrl = 'http://localhost:4000/';
+const  baseUrl = 'http://localhost:4000';
 
 const getAllEndpoints = () => {
   const request = axios.get(baseUrl);
   return request.then(response => response.data);
 };
 
-const createNewEndpoint = async (endpoint) => {
-  // const response = await axios.post(baseUrl)
+const createEndpoint = async (endpoint) => {
   const params = { endpoint };
-  //console.log(JSON.stringify(params))
-  let response;
-  try {
-      response = await fetch(`${baseUrl}/endpoint`, {
-          method: 'POST',
-          body: JSON.stringify(params),
-          headers: { 'Content-Type': 'application/json' },
-      });
-      const data = await response.json();
-      const myPath = data.split(': ')[1].split('added')[0]
-      console.log(data, myPath)
-      return myPath;
-  } catch (err) {
-      console.error(err);
-  }
-  // const response = await axios.post(baseUrl, newObject)
+  console.log("params", params)
 
+  try {
+    const response = await axios.post(`${baseUrl}/create`, params);
+    console.log(response);
+    return "just_filler";
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const removeEndpoint = async (endpointId) => {
@@ -43,7 +34,7 @@ const getAllRequests = (endpoint) => {
 };
 
 const requestService = { getAllEndpoints,
-                         createNewEndpoint,
+                         createEndpoint,
                          removeEndpoint,
                          getAllRequests,
                         };

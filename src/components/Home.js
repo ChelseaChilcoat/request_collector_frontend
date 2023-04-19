@@ -1,18 +1,14 @@
-import EndpointForm from './EndpointForm.js';
+import EndpointForm from './EndpointForm';
 import ListEndpoints from './ListEndpoints';
 import "../stylesheets/styles.css"
 
 const Home = ({ createEndpoint, removeEndpoint, endpointPathArray, updateEndpointArray }) => {
   return (
     <div>
-      <h1>Welcome to the Dumpster of Disappointment*!</h1>
+      <h1>Request Collector</h1>
+      <p></p>
       <EndpointForm createEndpoint={createEndpoint} updateEndpointArray={updateEndpointArray} />
       <ListEndpoints endpointPathArray={endpointPathArray} removeEndpoint={removeEndpoint} />
-      <div>
-        <p>*Don't be too disappointed, though...there's always Ryan Reynolds...
-          <img src={require("./ryan_reynolds.jpeg")} alt="Ryan Reynolds" />
-        </p>
-      </div>
   </div>
   )
 

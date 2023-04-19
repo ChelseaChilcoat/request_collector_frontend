@@ -7,8 +7,8 @@ function EndpointForm({createEndpoint, updateEndpointArray}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let path = await createEndpoint(endpoint)
-    setEndpoint(`http://localhost:4000/endpoint/${path}`);
+    let path = await createEndpoint(endpoint);
+    setEndpoint(`http://localhost:4000/${path}`);
     setModalIsOpen(true);
     updateEndpointArray(path);
   };
