@@ -1,0 +1,103 @@
+body {
+  font-family: sans-serif;
+  color: #84a98c;
+  background-color: #2f3e46;
+}
+
+h2, label, p {
+  color: #cad2c5;
+}
+
+h2 {
+  margin-top: 40px;
+}
+
+th,td {
+  border: 3px solid #52796f;
+  padding: 8px;
+}
+
+thead {
+  background-color: #354f52;
+  color: #cad2c5;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #cad2c5
+}
+
+tbody tr:nth-child(even) {
+  background-color: #eee;
+}
+
+img {
+  width: 75px;
+  border-radius: 50%;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+.links {
+  text-decoration: none;
+  color: #84a98c;
+}
+
+.links:hover {
+  text-decoration: underline;
+  color: #cad2c5;
+}
+
+button {
+  background-color: #cad2c5;
+  color: #2f3e46;
+  border-radius: 10px;
+  border-style: none;
+  margin-left: 20px;
+  height: 30px;
+  width: 60px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #84a98c;
+}
+
+input {
+  border-radius: 10px;
+  height: 25px;
+  border-style: none;
+  width: 300px;
+  margin-left: 10px;
+}
+
+.main {
+  margin-left: 35px;
+}
+
+.title {
+  margin-bottom: 40px;
+  margin-right: 35px;
+  background-color:#354f52;
+  color: #84a98c;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.form-instructions {
+  background-color: #252e33;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.modal  {
+  background: #F5F5F5;
+  box-shadow: 2px 2px 5px #888888;
+  border-radius: 5px;
+}
+
+.invalid {
+  color: rgb(223, 84, 84)
+}
