@@ -1,20 +1,20 @@
-# Request Bin Frontend
+# Request Collector Frontend
 
-### Install Request Bin
+### Install Request Collector
 download the code by cloning the repository
 ```
-git clone https://github.com/ChelseaSaunders/requestbin_frontend
+git clone https://github.com/ChelseaSaunders/request_collector_frontend/
 ```
 
-also download the **backend** by cloning the repository
+also download the **backend** by cloning the repository and following readme instructions in that repository
 ```
-git clone https://github.com/alison-martinez/requestbin
+git clone https://github.com/ChelseaSaunders/request_collector_server
 ```
 
-### Starting Request Bin Frontend
+### Starting Request Collector Frontend
 enter into the respository, download dependancies, and run the applciation
 ```
-cd requestbin_frontend
+cd request_collector_frontend
 npm install
 npm start
 ```
