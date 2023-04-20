@@ -5,29 +5,45 @@ import RequestService from '../services/RequestService';
 const EndpointForm = ({ endpointPathArray, setEndpointPathArray }) => {
   const [endpoint, setEndpoint] = useState('');
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [invalidInput, setInvalidInput] = useState(false);
+  const [endpointExists, setEndpointExists] = useState(false);
+
+  useEffect(() => { }, [invalidInput]);
+
+  const invalid = (newEndpoint) => {
+    const regex = /^[A-Za-z0-9_-]+$/;
+    return !regex.test(newEndpoint);
+  };
+
+  const existingEndpoint = (newEndpoint) => {
+    return endpointPathArray.includes(newEndpoint);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let path = await RequestService.createEndpoint(endpoint);
-    setEndpointPathArray(endpointPathArray.concat(path));
-    setEndpoint(`${RequestService.baseUrl}/${path}`);
-    setModalIsOpen(true);
-
-    // updateEndpointArray(path);
+    if (invalid(endpoint)) {
+      alert("Invalid endpoint. Only letters, numbers, dashes(-), and underscores(_) are allowed. Please correct your endpoint value in order to submit it.")
+    } else if (endpointExists) {
+      alert("This endpoint already exists. Please create a unique endpoint.");
+    } else {
+      let path = await RequestService.createEndpoint(endpoint);
+      setEndpointPathArray(endpointPathArray.concat(path));
+      setEndpoint(`${RequestService.baseUrl}/${path}`);
+      setModalIsOpen(true);
+    }
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-    setEndpoint('')
-  }
+    setEndpoint('');
+  };
 
-  const customStyles = {
-  content : {
-    backgroundColor       : '#F5F5F5',
-    boxShadow             : '2px 2px 5px #888888',
-    borderRadius          : '5px'
-  }
-};
+  const handleChange = (event) => {
+    event.preventDefault();
+    setEndpoint(event.target.value);
+    setInvalidInput(invalid(event.target.value));
+    setEndpointExists(existingEndpoint(event.target.value));
+  };
 
   return (
     <div>
@@ -39,19 +55,19 @@ const EndpointForm = ({ endpointPathArray, setEndpointPathArray }) => {
             type="text"
             value={endpoint}
             minLength={5}
-            onChange={(e) => setEndpoint(e.target.value)}
+            onChange={handleChange}
           />
         </label>
+        { invalidInput && <p className="invalid">Invalid endpoint. Only letters, numbers, dashes(-), and underscores(_) are allowed.</p>}
+        { endpointExists && <p className="invalid">Endpoint already exists. Please create a unique endpoint.</p>}
         <button type="submit">Create</button>
       </form>
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} appElement={document.getElementById('root')}>
-          <h2>New Endpoint Created</h2>
-          <p>Send POST requests to your endpoint at {endpoint}</p>
-          <button onClick={closeModal}>Got it!</button>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="modal" appElement={document.getElementById('root')}>
+        <h2>New Endpoint Created</h2>
+        <p>Send POST requests to your endpoint at {endpoint}</p>
+        <button onClick={closeModal}>Got it!</button>
       </Modal>
     </div>
   );
 }
 export default EndpointForm;
-
-// need to validate endpoint and also process for no spaces

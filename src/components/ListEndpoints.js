@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import RequestService from "../services/RequestService";
 
-const ListEndpoints = ({ removeEndpoint, endpointPathArray }) => {
-  const remove = (event) => {
+const ListEndpoints = ({ endpointPathArray, setEndpointPathArray }) => {
+  const remove = async (event) => {
     event.preventDefault();
-    const endpoint = event.target.id;
-    removeEndpoint(endpoint);
+    const path = event.target.id;
+    await RequestService.removeEndpoint(path);
+    const updatedPaths = endpointPathArray.filter(endpoint => endpoint !== path);
+    setEndpointPathArray(updatedPaths);
   };
 
   return (

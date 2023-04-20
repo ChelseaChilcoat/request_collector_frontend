@@ -17,18 +17,12 @@ const Home = () => {
       });
   }, []);
 
-  const removeEndpoint = async (path) => {
-    await RequestService.removeEndpoint(path);
-    const updatedPaths = endpointPathArray.filter(endpoint => endpoint !== path);
-    setEndpointPathArray(updatedPaths);
-  };
-
   return (
     <div>
       <h1>Request Collector</h1>
       <p></p>
       <EndpointForm endpointPathArray={endpointPathArray} setEndpointPathArray={setEndpointPathArray} />
-      <ListEndpoints endpointPathArray={endpointPathArray} removeEndpoint={removeEndpoint} />
+      <ListEndpoints endpointPathArray={endpointPathArray} setEndpointPathArray={setEndpointPathArray} />
   </div>
   );
 };
