@@ -44,6 +44,7 @@ const RequestService = { getAllEndpoints,
                          createEndpoint,
                          removeEndpoint,
                          getAllRequests,
+                         baseUrl
                         };
 
 export default RequestService;

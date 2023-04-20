@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
 import Modal from 'react-modal'
+import RequestService from '../services/RequestService';
 
-function EndpointForm({createEndpoint, updateEndpointArray}) {
+const EndpointForm = ({ endpointPathArray, setEndpointPathArray }) => {
   const [endpoint, setEndpoint] = useState('');
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let path = await createEndpoint(endpoint);
-    setEndpoint(`http://localhost:4000/${path}`);
+    let path = await RequestService.createEndpoint(endpoint);
+    setEndpointPathArray(endpointPathArray.concat(path));
+    setEndpoint(`${RequestService.baseUrl}/${path}`);
     setModalIsOpen(true);
-    updateEndpointArray(path);
+
+    // updateEndpointArray(path);
   };
 
   const closeModal = () => {
@@ -20,14 +23,6 @@ function EndpointForm({createEndpoint, updateEndpointArray}) {
 
   const customStyles = {
   content : {
-    // top                   : '30%',
-    // left                  : '30%',
-    // right                 : 'auto',
-    // bottom                : 'auto',
-    // marginRight           : '-50%',
-    // transform             : 'translate(-50%, -50%)',
-    // width                 : '300px',
-    // height                : '200px',
     backgroundColor       : '#F5F5F5',
     boxShadow             : '2px 2px 5px #888888',
     borderRadius          : '5px'
