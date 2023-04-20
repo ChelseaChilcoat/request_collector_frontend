@@ -1,30 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import RequestService from '../services/RequestService';
 import '../stylesheets/styles.css';
 
 
 const RequestsPage = () => {
   const [requests, setRequests] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const { path } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:4000/endpoints/${path}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setRequests(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
+    RequestService.getAllRequests(path)
+      .then(data => setRequests(data))
+      .catch(error => setError(error));
   }, [path]);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
 
   if (error) {
     return <p>An error occurred: {error.message}</p>;

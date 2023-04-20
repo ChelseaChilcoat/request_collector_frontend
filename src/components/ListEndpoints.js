@@ -17,7 +17,8 @@ const ListEndpoints = ({ removeEndpoint, endpointPathArray }) => {
         {endpointPathArray.map((path) => {
           return (
             <li key={path}>
-              <Link className="links" to={`/${path}`}>{path}</Link><button id={path} onClick={remove}>Delete</button>
+              <Link className="links" to={`/${path}`}>{path}</Link>
+              <button id={path} onClick={remove}>Delete</button>
             </li>
           );
         })}
