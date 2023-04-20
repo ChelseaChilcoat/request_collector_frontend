@@ -14,8 +14,7 @@ const ListEndpoints = ({ endpointPathArray, setEndpointPathArray }) => {
   return (
     <div>
       <h2>Existing Endpoints</h2>
-      <h4>(Litsted in order of creation, oldest first):</h4>
-      <br />
+      <p>Litsted in order of creation, oldest first. Click on an endpoint to view corresponding webhooks.</p>
       <ul>
         {endpointPathArray.map((path) => {
           return (

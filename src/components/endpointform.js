@@ -12,7 +12,7 @@ const EndpointForm = ({ endpointPathArray, setEndpointPathArray }) => {
 
   const invalid = (newEndpoint) => {
     const regex = /^[A-Za-z0-9_-]+$/;
-    return !regex.test(newEndpoint);
+    return newEndpoint !== "" && !regex.test(newEndpoint);
   };
 
   const existingEndpoint = (newEndpoint) => {
@@ -46,27 +46,32 @@ const EndpointForm = ({ endpointPathArray, setEndpointPathArray }) => {
   };
 
   return (
-    <div>
+    <div className='new-endpoint'>
       <h2>Create New Endpoint:</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Endpoint:
-          <input
-            type="text"
-            value={endpoint}
-            minLength={5}
-            onChange={handleChange}
-          />
-        </label>
-        { invalidInput && <p className="invalid">Invalid endpoint. Only letters, numbers, dashes(-), and underscores(_) are allowed.</p>}
-        { endpointExists && <p className="invalid">Endpoint already exists. Please create a unique endpoint.</p>}
-        <button type="submit">Create</button>
-      </form>
+      <div className='form-instructions'>
+        <p>For a custom endpoint address, enter a value including only letters, numbers, dashes (-) and underscores (_) below. To create a randomly-generated webhook address, simply leave the input field below blank and click "Create".</p>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Endpoint:
+            <input
+              type="text"
+              value={endpoint}
+              minLength={5}
+              onChange={handleChange}
+            />
+          </label>
+          <button type="submit">Create</button>
+        </form>
+        {invalidInput && <p className="invalid">Invalid endpoint. Only letters, numbers, dashes(-), and underscores(_) are allowed.</p>}
+        {endpointExists && <p className="invalid">Endpoint already exists. Please create a unique endpoint.</p>}
+      </div>
+
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="modal" appElement={document.getElementById('root')}>
         <h2>New Endpoint Created</h2>
         <p>Send POST requests to your endpoint at {endpoint}</p>
         <button onClick={closeModal}>Got it!</button>
       </Modal>
+
     </div>
   );
 }

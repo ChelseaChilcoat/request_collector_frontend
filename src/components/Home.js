@@ -18,12 +18,18 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Request Collector</h1>
-      <p></p>
+    <div className="main">
+      <div className="title">
+        <h1>Request Collector*</h1>
+        <p>A tool for receiving and viewing webhook data.</p>
+      </div>
       <EndpointForm endpointPathArray={endpointPathArray} setEndpointPathArray={setEndpointPathArray} />
       <ListEndpoints endpointPathArray={endpointPathArray} setEndpointPathArray={setEndpointPathArray} />
-  </div>
+      <div className="title">
+        <p>*Formerly (and perhaps more aptly) named the Dumpster of Disappointment: Where Webhook dreams come to die. Despite the name-change to keep up professional appearances, we will still share this photo of Ryan Reynolds as a reminder that it's not all bad.</p>
+        <img src={require("./ryan_reynolds.jpeg")} alt="Ryan Reynolds" />
+      </div>
+    </div>
   );
 };
 

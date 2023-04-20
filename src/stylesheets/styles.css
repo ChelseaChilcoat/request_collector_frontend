@@ -1,19 +1,11 @@
 body {
   font-family: sans-serif;
-  color: rgb(2, 28, 47);
-  background-color: rgb(69, 125, 165);
+  color: #84a98c;
+  background-color: #2f3e46;
 }
 
-h1, h2, label, p {
-  margin-left: 35px;
-}
-
-h1 {
-  margin-bottom: 40px;
-  margin-right: 35px;
-  background-color:rgb(254, 192, 110);
-  border-radius: 10px;
-  padding: 20px;
+h2, label, p {
+  color: #cad2c5;
 }
 
 h2 {
@@ -48,31 +40,34 @@ img {
   border-radius: 50%;
 }
 
-ul {
-  margin-left: none;
-}
-
 li {
   list-style: none;
   margin-bottom: 15px;
-  margin-left: none;
 }
 
 .links {
-  margin-left: none;
   text-decoration: none;
-  color: rgb(2, 28, 47);
+  color: #84a98c;
+}
+
+.links:hover {
+  text-decoration: underline;
+  color: #cad2c5;
 }
 
 button {
-  background-color: antiquewhite;
-  color: rgb(57, 103, 135);
+  background-color: #cad2c5;
+  color: #2f3e46;
   border-radius: 10px;
   border-style: none;
   margin-left: 20px;
   height: 30px;
   width: 60px;
   font-weight: bold;
+}
+
+button:hover {
+  background-color: #84a98c;
 }
 
 input {
@@ -83,8 +78,31 @@ input {
   margin-left: 10px;
 }
 
+.main {
+  margin-left: 35px;
+}
+
+.title {
+  margin-bottom: 40px;
+  margin-right: 35px;
+  background-color:#354f52;
+  color: #84a98c;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.form-instructions {
+  background-color: #252e33;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .modal  {
   background: #F5F5F5;
   box-shadow: 2px 2px 5px #888888;
   border-radius: 5px;
+}
+
+.invalid {
+  color: rgb(223, 84, 84)
 }
