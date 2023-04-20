@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// components
 import Home from './components/Home';
 import RequestsPage from './components/viewrequests';
 import requestService from './services/requestService';
@@ -13,9 +12,10 @@ const App = () => {
   useEffect(() => {
     requestService
       .getAllEndpoints()
-      .then(endpoints => {
-        setEndpoints(endpoints);
-        const paths = JSON.parse(endpoints).map(el => el.path);
+      .then(response => {
+        // console.log(response);
+        setEndpoints(response);
+        const paths = response.map(el => el.path);
         setEndpointPathArray(paths);
       });
   }, []);

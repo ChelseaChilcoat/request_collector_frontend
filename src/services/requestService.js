@@ -1,33 +1,42 @@
 import axios from 'axios';
-//fix me
+
 const  baseUrl = 'http://localhost:4000/endpoints';
 
-const getAllEndpoints = () => {
-  const request = axios.get(baseUrl);
-  return request.then(response => response.data);
+const getAllEndpoints = async() => {
+  try {
+    const response = await axios.get(baseUrl);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-const createEndpoint = async (endpoint) => {
+const createEndpoint = async(endpoint) => {
   const params = { endpoint };
   console.log("params", params)
 
   try {
     const response = await axios.post(`${baseUrl}/create`, params);
-    console.log(response);
+    console.log("CREATE RESPNOSE:", response);
     return "just_filler";
   } catch (error) {
     console.log(error);
   }
 };
 
-const removeEndpoint = async (endpointId) => {
-  await axios.delete(`${baseUrl}/${endpointId}`);
+const removeEndpoint = async(endpointId) => {
+  try {
+    await axios.delete(`${baseUrl}/${endpointId}`);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-const getAllRequests = (endpoint) => {
+const getAllRequests = async(endpoint) => {
+  console.log("url:", `${baseUrl}/${endpoint}`);
   try {
-  const request = axios.get(`${baseUrl}/${endpoint}`);
-  return request.then(response => JSON.parse(response.data));
+    const response = await axios.get(`${baseUrl}/${endpoint}`);
+    return response.data;
   } catch (error) {
     console.log(error);
   }

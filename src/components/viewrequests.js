@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../stylesheets/styles.css';
 
-//function RequestsPage({ path }) {
-function RequestsPage() {
+
+const RequestsPage = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const { path } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:4000/${path}`)
+    fetch(`http://localhost:4000/endpoints/${path}`)
       .then((res) => res.json())
       .then((data) => {
         setRequests(data);
@@ -58,7 +58,6 @@ function RequestsPage() {
       </tbody>
     </table>
   );
-
-}
+};
 
 export default RequestsPage;
