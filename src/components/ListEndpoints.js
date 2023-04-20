@@ -10,7 +10,9 @@ const ListEndpoints = ({ removeEndpoint, endpointPathArray }) => {
 
   return (
     <div>
-      <h2>Existing Endpoints:</h2>
+      <h2>Existing Endpoints</h2>
+      <h4>(Litsted in order of creation, oldest first):</h4>
+      <br />
       <ul>
         {endpointPathArray.map((path) => {
           return (

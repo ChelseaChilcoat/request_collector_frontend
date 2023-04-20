@@ -2,19 +2,19 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from './components/Home';
-import RequestsPage from './components/viewrequests';
-import requestService from './services/requestService';
+import RequestsPage from './components/RequestsPage';
+import RequestService from './services/RequestService';
 
 const App = () => {
   const [endpoints, setEndpoints] = useState([]);
   const [endpointPathArray, setEndpointPathArray] = useState([]);
 
   useEffect(() => {
-    requestService
+    RequestService
       .getAllEndpoints()
       .then(response => {
-        // console.log(response);
         setEndpoints(response);
+        response = response.sort((a, b) => a.id > b.id);
         const paths = response.map(el => el.path);
         setEndpointPathArray(paths);
       });
@@ -25,7 +25,7 @@ const App = () => {
   };
 
   const removeEndpoint = async (path) => {
-    await requestService.removeEndpoint(path);
+    await RequestService.removeEndpoint(path);
     const updatedPaths = endpointPathArray.filter(endpoint => endpoint !== path);
     setEndpointPathArray(updatedPaths);
   };
@@ -33,7 +33,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home createEndpoint={requestService.createEndpoint} updateEndpointArray={updateEndpointArray} removeEndpoint={removeEndpoint} endpointPathArray={endpointPathArray} />} />
+        <Route path="/" element={<Home createEndpoint={RequestService.createEndpoint} updateEndpointArray={updateEndpointArray} removeEndpoint={removeEndpoint} endpointPathArray={endpointPathArray} />} />
         <Route path="/:path" element={<RequestsPage />} />
       </Routes>
   </BrowserRouter>

@@ -13,12 +13,10 @@ const getAllEndpoints = async() => {
 
 const createEndpoint = async(endpoint) => {
   const params = { endpoint };
-  console.log("params", params)
-
   try {
     const response = await axios.post(`${baseUrl}/create`, params);
-    console.log("CREATE RESPNOSE:", response);
-    return "just_filler";
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.log(error);
   }
@@ -42,10 +40,10 @@ const getAllRequests = async(endpoint) => {
   }
 };
 
-const requestService = { getAllEndpoints,
+const RequestService = { getAllEndpoints,
                          createEndpoint,
                          removeEndpoint,
                          getAllRequests,
                         };
 
-export default requestService;
+export default RequestService;
