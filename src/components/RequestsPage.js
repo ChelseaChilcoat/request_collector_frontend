@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import RequestService from '../services/RequestService';
 import '../stylesheets/styles.css';
 
-
 const RequestsPage = () => {
   const [requests, setRequests] = useState([]);
   const [error, setError] = useState(null);
@@ -14,6 +13,11 @@ const RequestsPage = () => {
       .then(data => setRequests(data))
       .catch(error => setError(error));
   }, [path]);
+
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp);
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`
+  }
 
   return (
     <div className="main">
@@ -26,7 +30,7 @@ const RequestsPage = () => {
         : <table>
           <thead>
             <tr>
-              <th>Timestamp</th>
+              <th>Time of Receipt</th>
               <th>Headers</th>
               <th>Body</th>
             </tr>
@@ -35,7 +39,7 @@ const RequestsPage = () => {
             {requests.map((request) => (
               <tr key={request.id}>
                 <td>
-                  {request.timestamp}
+                  {formatDate(request.timestamp)}
                 </td>
                 <td>
                   {Object.entries(JSON.parse(request.headers)).map(([key, value]) => (
