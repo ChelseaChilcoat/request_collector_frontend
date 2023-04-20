@@ -7,45 +7,52 @@ import '../stylesheets/styles.css';
 const RequestsPage = () => {
   const [requests, setRequests] = useState([]);
   const [error, setError] = useState(null);
-
   const { path } = useParams();
+
   useEffect(() => {
     RequestService.getAllRequests(path)
       .then(data => setRequests(data))
       .catch(error => setError(error));
   }, [path]);
 
-  if (error) {
-    return <p>An error occurred: {error.message}</p>;
-  }
-
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Path</th>
-          <th>Headers</th>
-          <th>Body</th>
-        </tr>
-      </thead>
-      <tbody>
-        {requests.map((request) => (
-          <tr key={request.path}>
-            <td>{request.path}</td>
-            <td>
-              {Object.entries(JSON.parse(request.headers)).map(([key, value]) => (
-                <div key={key}>
-                  {key}: {value}
-                </div>
-              ))}
-            </td>
-            <td>
-              {request.body}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className="main">
+      <div className="title">
+        <h1>Requests for {path}</h1>
+        <p>Full address for webhook post requests: {RequestService.baseUrl}/{path}</p>
+      </div>
+      {error
+        ? <p>An error retrieving your webhook requests occurred: {error.mesage}</p>
+        : <table>
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Headers</th>
+              <th>Body</th>
+            </tr>
+          </thead>
+          <tbody>
+            {requests.map((request) => (
+              <tr key={request.id}>
+                <td>
+                  {request.timestamp}
+                </td>
+                <td>
+                  {Object.entries(JSON.parse(request.headers)).map(([key, value]) => (
+                    <div key={key}>
+                      {key}: {value}
+                    </div>
+                  ))}
+                </td>
+                <td>
+                  {request.body}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      }
+    </div>
   );
 };
 

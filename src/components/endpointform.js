@@ -26,10 +26,14 @@ const EndpointForm = ({ endpointPathArray, setEndpointPathArray }) => {
     } else if (endpointExists) {
       alert("This endpoint already exists. Please create a unique endpoint.");
     } else {
-      let path = await RequestService.createEndpoint(endpoint);
-      setEndpointPathArray(endpointPathArray.concat(path));
-      setEndpoint(`${RequestService.baseUrl}/${path}`);
-      setModalIsOpen(true);
+      try {
+        let path = await RequestService.createEndpoint(endpoint);
+        setEndpointPathArray(endpointPathArray.concat(path));
+        setEndpoint(`${RequestService.baseUrl}/${path}`);
+        setModalIsOpen(true);
+      } catch (error) {
+        alert(`Request failed: ${error.message}`);
+      }
     }
   };
 
@@ -71,7 +75,6 @@ const EndpointForm = ({ endpointPathArray, setEndpointPathArray }) => {
         <p>Send POST requests to your endpoint at {endpoint}</p>
         <button onClick={closeModal}>Got it!</button>
       </Modal>
-
     </div>
   );
 }

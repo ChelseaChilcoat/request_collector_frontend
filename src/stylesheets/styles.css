@@ -13,22 +13,17 @@ h2 {
 }
 
 th,td {
-  border: 3px solid rgb(57, 103, 135);
+  border: 3px solid #52796f;
   padding: 8px;
 }
 
 thead {
-  background-color: rgb(2, 28, 47);
-  color: antiquewhite;
-}
-
-.cell-highlight {
-  background-color: gold;
-  font-weight: bold;
+  background-color: #354f52;
+  color: #cad2c5;
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #fff;
+  background-color: #cad2c5
 }
 
 tbody tr:nth-child(even) {
